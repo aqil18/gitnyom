@@ -1,0 +1,14 @@
+{
+    "nodes": [
+      {"id": "file1", "group": "file"},
+      {"id": "file2", "group": "file"},
+      {"id": "func1", "group": "function"},
+      {"id": "func2", "group": "function"}
+    ],
+    "links": [
+      {"source": "file1", "target": "func1"},
+      {"source": "func1", "target": "func2"},
+      {"source": "file2", "target": "func1"}
+    ]
+  }
+  

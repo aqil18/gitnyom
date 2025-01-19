@@ -6,19 +6,18 @@ import utils.contributions
 import utils.issues
 import utils.resume
 import utils.text_dump
+import utils.runSemgrep
 
 app = FastAPI()
 
 
 @app.get("/")
-async def root():
-    contributions = utils.contributions.get_commit_activity('https://github.com/supabase/supabase')
-    response = utils.issues.get_issues('https://github.com/supabase/supabase')
-    # summary, tree, content = ingest('https://github.com/supabase/supabase')
-    # utils.text_dump.summary(summary, tree, content)
-    # resume_summary = utils.resume.generate_description(summary + tree + content)
-    # return {'contributions': contributions, 'issues': response, 'file_structure': resume_summary}
-    return {'contributions': contributions, 'response': response}
+async def root(repo_url: str = 'https://github.com/ubccpsc/classportal_deprecated'):
+    contributions = utils.contributions.get_commit_activity(repo_url)
+    response = utils.issues.get_issues(repo_url)
+    fs = utils.text_dump.get_file_structure(repo_url)
+    security = utils.runSemgrep.get_security_analysis(repo_url)
+    return {'contributions': contributions, 'issues': response, 'file_structure': fs, 'security': security}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

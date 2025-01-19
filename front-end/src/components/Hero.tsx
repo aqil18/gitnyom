@@ -14,14 +14,14 @@ import {
     CommandShortcut,
   } from "@/components/ui/command"
 import SearchBar from "./SearchBar";
-import { useCallback, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useRef, useState } from "react";
   
 type recType = {
     name: string;
     url: string;
 }
 
-export default function Hero() {
+export default function Hero(props: {urlSetter: Dispatch<SetStateAction<string>>}) {
     const [repoUrl, setRepoUrl] = useState<string>("");
     const searchBarRef = useRef<HTMLInputElement | null>(null);
     const recommendations = useRef<recType[]>([
@@ -49,7 +49,7 @@ export default function Hero() {
 
     const onSubmitUrl = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("Submit", repoUrl);
+        props.urlSetter(repoUrl);
     }, []);
 
     const onClickRecommendation = useCallback((url: string) => {
