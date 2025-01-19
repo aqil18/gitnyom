@@ -142,15 +142,22 @@ renderer.domElement.addEventListener("click", (event) => {
   const raycaster = new THREE.Raycaster();
   raycaster.setFromCamera(mouse, camera);
 
+
+
+  console.log(nodeObjects)
   const intersects = raycaster.intersectObjects(Object.values(nodeObjects));
+
+  
+
 
   if (intersects.length > 0) {
     const intersectedNode = intersects[0].object;
-    const nodeId = Object.keys(nodeObjects).find(
-      (key) => nodeObjects[key] === intersectedNode
-    );
+    const nodeId = Object.keys(nodeObjects).find(key =>
+      nodeObjects[key] === intersectedNode);
+
 
     if (summaries[nodeId]) {
+      console.log(summaries[nodeId]);
       showPopup(summaries[nodeId], event.clientX, event.clientY);
     }
   }
