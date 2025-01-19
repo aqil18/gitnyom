@@ -6,15 +6,20 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.m
 const nodes = [
   { id: "file1", group: "file" },
   { id: "file2", group: "file" },
-  { id: "func1", group: "function" },
-  { id: "func2", group: "function" },
+  { id: "folder1", group: "folder" },
+  { id: "folder2", group: "folder" },
 ];
 
 const links = [
-  { source: "file1", target: "func1" },
-  { source: "func1", target: "func2" },
-  { source: "file2", target: "func1" },
+  { source: "file1", target: "folder1" },
+  { source: "folder1", target: "folder2" },
+  { source: "file2", target: "folder1" },
 ];
+
+const summaries = {
+  file1: "File 1 Summary",
+  file2: "File 2 Summary"
+}
 
 // D3 Force Layout
 const simulation = d3.forceSimulation(nodes)
@@ -49,7 +54,7 @@ document.body.appendChild(renderer.domElement);
 const geometry = new THREE.SphereGeometry(5, 32, 32);
 const materials = {
   file: new THREE.MeshBasicMaterial({ color: 0x00f0ff }),
-  function: new THREE.MeshBasicMaterial({ color: 0xff0000 }),
+  folder: new THREE.MeshBasicMaterial({ color: 0xff0000 }),
 };
 
 // Add Nodes to Scene
