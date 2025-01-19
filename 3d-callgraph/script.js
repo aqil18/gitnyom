@@ -109,6 +109,8 @@ controls.screenSpacePanning = false; // Disables panning out of the screen
 
 // Function to create and show popup
 function showPopup(content, x, y) {
+
+  console.log("HEKO")
   const popup = document.createElement("div");
   popup.style.position = "absolute";
   popup.style.left = `${x}px`;
@@ -121,13 +123,13 @@ function showPopup(content, x, y) {
 
   document.body.appendChild(popup);
 
-  // Remove popup on click outside
-  document.addEventListener("click", function removePopup(event) {
-    if (!popup.contains(event.target)) {
-      document.body.removeChild(popup);
-      document.removeEventListener("click", removePopup);
-    }
-  });
+  // // Remove popup on click outside
+  // document.addEventListener("click", function removePopup(event) {
+  //   if (!popup.contains(event.target)) {
+  //     document.body.removeChild(popup);
+  //     document.removeEventListener("click", removePopup);
+  //   }
+  // });
 }
 
 // Add event listener for node clicks
@@ -162,6 +164,9 @@ renderer.domElement.addEventListener("click", (event) => {
 
     // If node has a summary, show popup
     if (summaries[nodeId]) {
+      console.log(event.clientX)
+      console.log(event.clientY)
+
       showPopup(summaries[nodeId], event.clientX, event.clientY);
     }
   }
