@@ -144,13 +144,14 @@ async function initGraph() {
   });
 
   links.forEach((link) => {
-    const source = nodeObjects[link.source];
-    const target = nodeObjects[link.target];
+    console.log(link)
+    const source = link.source;
+    const target = link.target
 
     if (source && target) {
       const points = [
-        new THREE.Vector3(source.position.x, source.position.y, source.position.z),
-        new THREE.Vector3(target.position.x, target.position.y, target.position.z),
+        new THREE.Vector3(source.x, source.y, source.z),
+        new THREE.Vector3(target.x, target.y, target.z),
       ];
       const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
       const line = new THREE.Line(lineGeometry, lineMaterial);
@@ -200,6 +201,8 @@ async function initGraph() {
 
     document.body.appendChild(popup);
 
+
+    /// !!!! Issues trying to close popup
     // // Remove popup on click outside
     // document.addEventListener("click", function removePopup(event) {
     //   if (!popup.contains(event.target)) {
