@@ -70,9 +70,10 @@ def semgrepBasic(clone_dir) -> SecurityResult:
 
     res: SecurityResult = {"scan_summary": "", "scan_status": "", "code_findings": ""}
     for f in final_output_names:
+        if not os.path.exists(f"{clone_dir}/{f}"):
+            continue
         with open(f"{clone_dir}/{f}", 'r') as file:
             res[f.split('.')[0]] = file.read()
-        # res[f.split('.')[0]] = open(f"{clone_dir}/{f}", 'r').read()
     
     return res
 

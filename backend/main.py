@@ -12,14 +12,11 @@ app = FastAPI()
 
 
 @app.get("/")
-async def root():
-    contributions = utils.contributions.get_commit_activity('https://github.com/supabase/supabase')
-    response = utils.issues.get_issues('https://github.com/supabase/supabase')
-    fs = utils.text_dump.get_file_structure('https://github.com/supabase/supabase')
-    security = utils.runSemgrep.get_security_analysis('https://github.com/ubccpsc/classportal_deprecated')
-    # summary, tree, content = ingest('https://github.com/supabase/supabase')
-    # utils.text_dump.summary(summary, tree, content)
-    # resume_summary = utils.resume.generate_description(summary + tree + content)
+async def root(repo_url: str = 'https://github.com/ubccpsc/classportal_deprecated'):
+    contributions = utils.contributions.get_commit_activity(repo_url)
+    response = utils.issues.get_issues(repo_url)
+    fs = utils.text_dump.get_file_structure(repo_url)
+    security = utils.runSemgrep.get_security_analysis(repo_url)
     return {'contributions': contributions, 'issues': response, 'file_structure': fs, 'security': security}
 
 if __name__ == "__main__":

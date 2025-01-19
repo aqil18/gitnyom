@@ -1,13 +1,27 @@
 'use client'
 import Hero from "@/components/Hero";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Summary from "@/components/Summary";
 import Anatomy from "@/components/Anatomy";
 import Security from "@/components/Security";
 
-export default function Home() {
+type Contributions = {
+  name: string;
+  commits: number;
+  percentage: number;
+}
+
+export default async function Home() {
   const [currentTab, setCurrentTab] = useState<string>("Summary");
+  const [url, setUrl] = useState<string>("");
   const tabs = useRef<string[]>(["Summary", "Anatomy", "Security"]);
+  const backendUrl = "http://127.0.0.1:8000/";
+
+  useEffect(() => {
+    fetch(`${backendUrl}/?repo_url=${url}`)
+      .then((response) => console.log(response.json()))
+      .catch((error) => console.error("Error:", error))
+  }, [url])
 
   const example = {
     name: "Supabase",
@@ -46,7 +60,7 @@ export default function Home() {
       className="w-full flex flex-col items-center justify-center
       gap-y-20"
     >
-      <Hero />
+      <Hero urlSetter={setUrl}/>
       <div className="flex flex-col w-5/6 ">
         <div className="flex flex-row gap-x-2">
           {tabs.current.map((tab) => (
