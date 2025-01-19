@@ -106,7 +106,7 @@ window.addEventListener("resize", () => {
 // Initialize OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // Smooth controls
-controls.dampingFactor = 0.25;
+controls.dampingFactor = 0.1;
 controls.screenSpacePanning = false; // Disables panning out of the screen
 
 // Animation Loop
