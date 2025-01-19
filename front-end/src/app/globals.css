@@ -72,6 +72,11 @@ body {
   h1 {
     @apply text-8xl;
   }
+
+  h2 {
+    @apply text-3xl;
+  }
+
   p {
     @apply text-lg;
   }
