@@ -3,7 +3,7 @@ import { Pie, PieChart } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 import { type ChartConfig } from "@/components/ui/chart"
 import { ColumnDef } from '@tanstack/react-table';
-import { DataTable } from './IssueTable';
+import IssueTab from './Issue';
 
 type ContributionData = {
     name: string,
@@ -79,43 +79,48 @@ const Summary: React.FC<SummaryProps> = (props: SummaryProps) => {
     });
 
     return (
-      <div className="flex flex-col gap-y-8">
-        <h2>{props.name}</h2>
+      <div className="flex flex-col overflow-auto h-full">
+        <div className="flex flex-col gap-y-5">
+          <h2>{props.name}</h2>
+    
+          <p className="p-3 bg-[#4A665A]/[.18] rounded-2xl">
+            {props.description}
+          </p>
+          
+          <div className="flex lg:flex-row gap-6">
+            
+            <ChartContainer
+              className="bg-[#4A665A]/[.18] rounded-2xl"
+              config={chartConfig}
+            >
+              <PieChart>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Pie
+                  data={chartData}
+                  dataKey="contributionValue"
+                  nameKey="name"
+                />
+                <ChartLegend
+                  className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/6 [&>*]:justify-center"
+                  content={<ChartLegendContent nameKey="name" />}
+                />
+              </PieChart>
+            </ChartContainer>
+            <div className="w-full flex-1 h-full max-h-[500px] overflow-hidden">
+              hello
+              <div className="w-full overflow-y-auto h-full">
+                <IssueTab />
+              </div>
 
-        <p className="p-3 bg-[#4A665A]/[.18] rounded-2xl">
-          {props.description}
-        </p>
-
-        <div className="flex flex-row gap-x-3 h-full">
-          <ChartContainer
-            className="w-full h-full bg-[#4A665A]/[.18] rounded-2xl"
-            config={chartConfig}
-          >
-            <PieChart>
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent hideLabel />}
-              />
-              <Pie
-                data={chartData}
-                dataKey="contributionValue"
-                nameKey="name"
-              />
-              <ChartLegend
-                className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/6 [&>*]:justify-center"
-                content={<ChartLegendContent nameKey="name" />}
-              />
-            </PieChart>
-          </ChartContainer>
-
-          <div className="container mx-auto py-10">
-            <DataTable columns={columns} data={data} />
+            </div>
           </div>
         </div>
       </div>
     );
+    
 };
-
-
 
 export default Summary;
