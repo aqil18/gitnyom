@@ -140,24 +140,28 @@ renderer.domElement.addEventListener("click", (event) => {
 
   // Raycaster to find intersected objects
   const raycaster = new THREE.Raycaster();
+  
+  // Casts a ray
   raycaster.setFromCamera(mouse, camera);
 
 
 
-  console.log(nodeObjects)
+  // Finds all objects intersecting with ray of mouse click
   const intersects = raycaster.intersectObjects(Object.values(nodeObjects));
 
   
 
 
   if (intersects.length > 0) {
+    // Gives intersected object
     const intersectedNode = intersects[0].object;
+
+    // Finds the matching node object in nodeObjects to get the nodeId
     const nodeId = Object.keys(nodeObjects).find(key =>
       nodeObjects[key] === intersectedNode);
 
-
+    // If node has a summary, show popup
     if (summaries[nodeId]) {
-      console.log(summaries[nodeId]);
       showPopup(summaries[nodeId], event.clientX, event.clientY);
     }
   }
