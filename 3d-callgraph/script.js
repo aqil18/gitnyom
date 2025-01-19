@@ -108,9 +108,7 @@ controls.dampingFactor = 0.1;
 controls.screenSpacePanning = false; // Disables panning out of the screen
 
 // Function to create and show popup
-function showPopup(content, x, y) {
-
-  console.log("HEKO")
+function showPopup(name, content, x, y) {
   const popup = document.createElement("div");
   popup.style.position = "absolute";
   popup.style.left = `${x}px`;
@@ -119,7 +117,19 @@ function showPopup(content, x, y) {
   popup.style.backgroundColor = "white";
   popup.style.border = "1px solid black";
   popup.style.zIndex = 1000;
-  popup.innerHTML = content;
+  popup.style.maxWidth = "200px";
+  popup.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.1)";
+
+  const titleElement = document.createElement("div");
+  titleElement.style.fontWeight = "bold";
+  titleElement.style.marginBottom = "5px";
+  titleElement.innerText = name;
+
+  const contentElement = document.createElement("div");
+  contentElement.innerText = content;
+
+  popup.appendChild(titleElement);
+  popup.appendChild(contentElement);
 
   document.body.appendChild(popup);
 
@@ -164,10 +174,7 @@ renderer.domElement.addEventListener("click", (event) => {
 
     // If node has a summary, show popup
     if (summaries[nodeId]) {
-      console.log(event.clientX)
-      console.log(event.clientY)
-
-      showPopup(summaries[nodeId], event.clientX, event.clientY);
+      showPopup(nodeId, summaries[nodeId], event.clientX, event.clientY);
     }
   }
 });
