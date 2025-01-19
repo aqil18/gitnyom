@@ -22,54 +22,12 @@ function traverseFileStructure(fileStructure, nodes = [], links = [], parent = n
 
 // Fetch file structure from the server
 async function fetchFileStructure(url) {
-  const data = {
-    "name": "project-root",
-    "path": "/",
-    "url": "http://localhost:8000/api/project-root",
-    "type": "tree",
-    "contents": [
-      {
-        "name": "index.html",
-        "path": "/index.html",
-        "url": "http://localhost:8000/api/files/index.html",
-        "type": "blob"
-      },
-      {
-        "name": "scripts",
-        "path": "/scripts",
-        "url": "http://localhost:8000/api/files/scripts",
-        "type": "tree",
-        "contents": [
-          {
-            "name": "app.js",
-            "path": "/scripts/app.js",
-            "url": "http://localhost:8000/api/files/scripts/app.js",
-            "type": "blob"
-          },
-          {
-            "name": "utils.js",
-            "path": "/scripts/utils.js",
-            "url": "http://localhost:8000/api/files/scripts/utils.js",
-            "type": "blob"
-          }
-        ]
-      },
-      {
-        "name": "styles",
-        "path": "/styles",
-        "url": "http://localhost:8000/api/files/styles",
-        "type": "tree",
-        "contents": [
-          {
-            "name": "main.css",
-            "path": "/styles/main.css",
-            "url": "http://localhost:8000/api/files/styles/main.css",
-            "type": "blob"
-          }
-        ]
-      }
-    ]
-  }
+  const response = await fetch("data.json");
+  const data = (await response.json())["file_structure"];
+
+  // fetch("data.json")
+  //   .then(response => response.json())
+  //   .then(data => console.log(data));
 
   // Having issues with cors!!
   // const response = await fetch(url)
@@ -86,7 +44,7 @@ async function fetchFileStructure(url) {
 // Initialize the graph
 async function initGraph() {
   const fileStructure = await fetchFileStructure("http://localhost:8000");
-  console.log(fileStructure)
+  // console.log(fileStructure)
   const { nodes, links } = traverseFileStructure(fileStructure);
 
   // D3 Force Layout
@@ -144,7 +102,7 @@ async function initGraph() {
   });
 
   links.forEach((link) => {
-    console.log(link)
+    // console.log(link)
     const source = link.source;
     const target = link.target
 

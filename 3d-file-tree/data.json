@@ -1,14 +1,384 @@
 {
-    "nodes": [
-      {"id": "file1", "group": "file"},
-      {"id": "file2", "group": "file"},
-      {"id": "func1", "group": "function"},
-      {"id": "func2", "group": "function"}
-    ],
-    "links": [
-      {"source": "file1", "target": "func1"},
-      {"source": "func1", "target": "func2"},
-      {"source": "file2", "target": "func1"}
+  "file_structure": {
+    "name": "root",
+    "path": "",
+    "url": "",
+    "type": "tree",
+    "contents": [
+      {
+        "name": ".gitignore",
+        "path": ".gitignore",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/983be95b9a4e0d0aef544fb0e7ae257a4709c840",
+        "type": "blob"
+      },
+      {
+        "name": "3d-file-tree",
+        "path": "3d-file-tree",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/06e7463950f9888bab097a665f03cca3c8623c38",
+        "type": "tree",
+        "contents": [
+          {
+            "name": "3d-file-tree/data.json",
+            "path": "3d-file-tree/data.json",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/b99ca50b672cefeffe11967f86ccfef9a579c46c",
+            "type": "blob"
+          },
+          {
+            "name": "3d-file-tree/index.html",
+            "path": "3d-file-tree/index.html",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/f186344f7a141bfc1f5fb4ea562496d3e9c2262c",
+            "type": "blob"
+          },
+          {
+            "name": "3d-file-tree/script.js",
+            "path": "3d-file-tree/script.js",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/760ab29edf2235b5b7fccfbd2f86967ea71170b2",
+            "type": "blob"
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "path": "README.md",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/918abeaec0871aa4a33810129f2bce025d669150",
+        "type": "blob"
+      },
+      {
+        "name": "backend",
+        "path": "backend",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/ab4e317f8e8f213c7b2b8d58fc8c703bf95d04c3",
+        "type": "tree",
+        "contents": [
+          {
+            "name": "backend/main.py",
+            "path": "backend/main.py",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/f079e0f215a25d4c3f766665771734e71bdb1645",
+            "type": "blob"
+          },
+          {
+            "name": "backend/utils",
+            "path": "backend/utils",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/daff066f5cf4a638fa750f40a6251f1356b3e398",
+            "type": "tree",
+            "contents": [
+              {
+                "name": "backend/utils/__init__.py",
+                "path": "backend/utils/__init__.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+                "type": "blob"
+              },
+              {
+                "name": "backend/utils/contributions.py",
+                "path": "backend/utils/contributions.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/0dc66d3080f30aad4df9f30078154e019bf7dca4",
+                "type": "blob"
+              },
+              {
+                "name": "backend/utils/issues.py",
+                "path": "backend/utils/issues.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/22d0010c379e89c13d8eaa6c1478f0ac8a405819",
+                "type": "blob"
+              },
+              {
+                "name": "backend/utils/parse_output.py",
+                "path": "backend/utils/parse_output.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/4ea33f010c4cb5fd331c3eb505f36e12a9b51839",
+                "type": "blob"
+              },
+              {
+                "name": "backend/utils/resume.py",
+                "path": "backend/utils/resume.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/42db595bda128d82759a2db5dcc445239d585878",
+                "type": "blob"
+              },
+              {
+                "name": "backend/utils/runSemgrep.py",
+                "path": "backend/utils/runSemgrep.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/482ba8abd0bb5888e4f73a5e25276745d766e100",
+                "type": "blob"
+              },
+              {
+                "name": "backend/utils/text_dump.py",
+                "path": "backend/utils/text_dump.py",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/344b3ba88c67729f1b1c63a9300d98906e21c56f",
+                "type": "blob"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "front-end",
+        "path": "front-end",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/d36c956364d456e05241a8811831363cdbe84fb8",
+        "type": "tree",
+        "contents": [
+          {
+            "name": "front-end/.gitignore",
+            "path": "front-end/.gitignore",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/5ef6a520780202a1d6addd833d800ccb1ecac0bb",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/README.md",
+            "path": "front-end/README.md",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/e215bc4ccf138bbc38ad58ad57e92135484b3c0f",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/components.json",
+            "path": "front-end/components.json",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/a577707397edbae0a8b7f7fa73d648fdc19c66c0",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/next.config.ts",
+            "path": "front-end/next.config.ts",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/e9ffa3083ad279ecf95fd8eae59cb253e9a539c4",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/package-lock.json",
+            "path": "front-end/package-lock.json",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/e64fe47c505acaf36bfde90d16290e9c1957f89f",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/package.json",
+            "path": "front-end/package.json",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/769e59c252a36e1741713bbefd26db05c860df2f",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/postcss.config.mjs",
+            "path": "front-end/postcss.config.mjs",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/1a69fd2a450afc3bf47e08b22c149190df0ffdb4",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/public",
+            "path": "front-end/public",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/c88f389de09f418da376598c42e8788d4fb6d172",
+            "type": "tree",
+            "contents": [
+              {
+                "name": "front-end/public/file.svg",
+                "path": "front-end/public/file.svg",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/004145cddf3f9db91b57b9cb596683c8eb420862",
+                "type": "blob"
+              },
+              {
+                "name": "front-end/public/globe.svg",
+                "path": "front-end/public/globe.svg",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/567f17b0d7c7fb662c16d4357dd74830caf2dccb",
+                "type": "blob"
+              },
+              {
+                "name": "front-end/public/next.svg",
+                "path": "front-end/public/next.svg",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/5174b28c565c285e3e312ec5178be64fbeca8398",
+                "type": "blob"
+              },
+              {
+                "name": "front-end/public/vercel.svg",
+                "path": "front-end/public/vercel.svg",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/77053960334e2e34dc584dea8019925c3b4ccca9",
+                "type": "blob"
+              },
+              {
+                "name": "front-end/public/window.svg",
+                "path": "front-end/public/window.svg",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/b2b2a44f6ebc70c450043c05a002e7a93ba5d651",
+                "type": "blob"
+              }
+            ]
+          },
+          {
+            "name": "front-end/src",
+            "path": "front-end/src",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/92bb8ca13bcfdbdee71acd0748b10f5c392c3ba4",
+            "type": "tree",
+            "contents": [
+              {
+                "name": "front-end/src/app",
+                "path": "front-end/src/app",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/196495736b824f2ea5a7a987b9bcd8f65542710b",
+                "type": "tree",
+                "contents": [
+                  {
+                    "name": "front-end/src/app/favicon.ico",
+                    "path": "front-end/src/app/favicon.ico",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/718d6fea4835ec2d246af9800eddb7ffb276240c",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/app/globals.css",
+                    "path": "front-end/src/app/globals.css",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/c50cfe905af77eb5ada71c5352b4444469df182f",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/app/layout.tsx",
+                    "path": "front-end/src/app/layout.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/0a4946e93780d4477ee1d9cd33f9b60e91723198",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/app/page.tsx",
+                    "path": "front-end/src/app/page.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/4a6c30c647a76e73fe0f0a042e6446a8becf1d86",
+                    "type": "blob"
+                  }
+                ]
+              },
+              {
+                "name": "front-end/src/components",
+                "path": "front-end/src/components",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/b754bbc7b89c4b6ebb292ba5c78d228f0147be08",
+                "type": "tree",
+                "contents": [
+                  {
+                    "name": "front-end/src/components/Anatomy.tsx",
+                    "path": "front-end/src/components/Anatomy.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/88729d92b258415000eb2252d68d369a5337f89a",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/CLITextViewer.tsx",
+                    "path": "front-end/src/components/CLITextViewer.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/38fe867fbbb60a1c5996f3fa023772dd0f54a04d",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/Hero.tsx",
+                    "path": "front-end/src/components/Hero.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/1cc5b8f054f2f86979584f4daf13e911a1d4bbf1",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/Issue.tsx",
+                    "path": "front-end/src/components/Issue.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/859a2e55489ca67769c2e74a9df9a12cd70446f2",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/SearchBar.tsx",
+                    "path": "front-end/src/components/SearchBar.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/2df8a1dba595ec847a77c24b0b03ba54bccc89e6",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/Security.tsx",
+                    "path": "front-end/src/components/Security.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/e9e7dfe514faf38bb4d65d0d3f889743b5d0c404",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/Summary.tsx",
+                    "path": "front-end/src/components/Summary.tsx",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/4cea59c383a2c4ef11f04e354d3d3f91af1f55fb",
+                    "type": "blob"
+                  },
+                  {
+                    "name": "front-end/src/components/ui",
+                    "path": "front-end/src/components/ui",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/3a3d080d96d07d5fd26ac64791647ffa9f8e5eaa",
+                    "type": "tree",
+                    "contents": [
+                      {
+                        "name": "front-end/src/components/ui/button.tsx",
+                        "path": "front-end/src/components/ui/button.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/65d4fcd9ca74240125c5f72cf84c873781141fea",
+                        "type": "blob"
+                      },
+                      {
+                        "name": "front-end/src/components/ui/card.tsx",
+                        "path": "front-end/src/components/ui/card.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/cabfbfc59d955db9efc2049783cad4a71db55442",
+                        "type": "blob"
+                      },
+                      {
+                        "name": "front-end/src/components/ui/chart.tsx",
+                        "path": "front-end/src/components/ui/chart.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/32dc873f363cb707ab3cd8d37e14e03771f095d2",
+                        "type": "blob"
+                      },
+                      {
+                        "name": "front-end/src/components/ui/command.tsx",
+                        "path": "front-end/src/components/ui/command.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/2cecd9104b27be82d238aa2f1cbb351e05446af7",
+                        "type": "blob"
+                      },
+                      {
+                        "name": "front-end/src/components/ui/dialog.tsx",
+                        "path": "front-end/src/components/ui/dialog.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/1647513eced8f9e788c0e8b63c99654d3a542a9c",
+                        "type": "blob"
+                      },
+                      {
+                        "name": "front-end/src/components/ui/input.tsx",
+                        "path": "front-end/src/components/ui/input.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/69b64fb2455114c3eeda2d18741af0027b3c5e89",
+                        "type": "blob"
+                      },
+                      {
+                        "name": "front-end/src/components/ui/table.tsx",
+                        "path": "front-end/src/components/ui/table.tsx",
+                        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/c0df655c0bf26af1148d038e1d013e884663b240",
+                        "type": "blob"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "front-end/src/lib",
+                "path": "front-end/src/lib",
+                "url": "https://api.github.com/repos/aqil18/gitnyom/git/trees/1bdc1d66ab5752bb8929bbb4ca0daee1df5f30da",
+                "type": "tree",
+                "contents": [
+                  {
+                    "name": "front-end/src/lib/utils.ts",
+                    "path": "front-end/src/lib/utils.ts",
+                    "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/bd0c391ddd1088e9067844c48835bf4abcd61783",
+                    "type": "blob"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "front-end/tailwind.config.ts",
+            "path": "front-end/tailwind.config.ts",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/c68d36b21233e634fb82adb3bd14b180df60b426",
+            "type": "blob"
+          },
+          {
+            "name": "front-end/tsconfig.json",
+            "path": "front-end/tsconfig.json",
+            "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/c1334095f876a408c10f2357faaced969ec090ab",
+            "type": "blob"
+          }
+        ]
+      },
+      {
+        "name": "package-lock.json",
+        "path": "package-lock.json",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/f2cb372d79a6c4ee9d1739cb082eb3a1ef389ed5",
+        "type": "blob"
+      },
+      {
+        "name": "package.json",
+        "path": "package.json",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/297c9ba2cc14c1adcd6074168d569d33d697b052",
+        "type": "blob"
+      },
+      {
+        "name": "requirements.txt",
+        "path": "requirements.txt",
+        "url": "https://api.github.com/repos/aqil18/gitnyom/git/blobs/08ca313c4c94d348ea079936e864b65a0a44cc8a",
+        "type": "blob"
+      }
     ]
   }
-  
+}
