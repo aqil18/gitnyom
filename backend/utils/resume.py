@@ -7,7 +7,6 @@ openai.api_key = os.getenv('OpenAI_APIKEY')
 print(f"Password:{openai.api_key}")
 
 def generate_description(input):
-    # print(input) works
     messages = [
         {'role': 'user',
          'content':

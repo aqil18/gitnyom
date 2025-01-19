@@ -28,6 +28,16 @@ export default function Home() {
       { name: "Isabella", numeric: 10, percentage: 10 },
       { name: "Ethan", numeric: 10, percentage: 10 },
       { name: "Mia", numeric: 10, percentage: 10 }
+    ],
+    issues: [
+      {
+        title: "Issue 1",
+        url: "",
+        tags: [
+          { name: "bug", color: "#d73a4a" },
+          { name: "enhancement", color: "#a2eeef" }
+        ]
+      },
     ]
   };
 
