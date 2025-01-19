@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
 import utils
-from gitingest import ingest
 
 import utils.contributions
 import utils.issues
