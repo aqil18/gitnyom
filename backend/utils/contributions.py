@@ -30,25 +30,32 @@ def get_commit_activity(repo_url):
         return None
     elif response.status_code != 200:
         raise Exception(f"Failed to fetch data: {response.status_code}, {response.text}")
-
-    return response.json()
-
-def visualize_commit_activity(repo_url):
-    data = get_commit_activity(repo_url)
-    if not data:
-        return
-
-    # Prepare data for visualization
-    contributors = []
-    total_commits = []
+    
+    data = response.json()
+    total_commits_count = sum([contributor['total'] for contributor in data])
+    contributors_data = []
 
     for contributor in data:
-        contributors.append(f"{contributor['author']['login']} ({contributor['total']} commits)")
-        total_commits.append(contributor["total"])
+        contributors_data.append({
+            "name": contributor['author']['login'],
+            "commits": contributor['total'],
+            "percentage": (contributor['total'] / total_commits_count) * 100
+        })
+
+    return contributors_data
+
+def visualize_commit_activity(repo_url):
+    contributors_data = get_commit_activity(repo_url)
+    if not contributors_data:
+        return
+
+    # Extract data for plotting
+    labels = [contributor['name'] for contributor in contributors_data]
+    sizes = [contributor['commits'] for contributor in contributors_data]
 
     # Plot the pie chart
     plt.figure(figsize=(10, 10))
-    plt.pie(total_commits, labels=contributors, autopct='%1.1f%%', startangle=140)
+    plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
     plt.title("Commit Distribution Among Contributors (with Commit Numbers)")
     plt.axis("equal")  # Equal aspect ratio ensures the pie is drawn as a circle
     plt.show()

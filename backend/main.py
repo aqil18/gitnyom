@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from .resume_points import my_utils
+from .utils import ai, contributions
 
 app = FastAPI()
 
@@ -13,9 +13,13 @@ def root():
 async def generate_description():
     print('hello')
     text = open("example_repo.txt").read()
-    description = my_utils.generate_description(text)
+    description = ai.generate_description(text)
     return {"resume_points": description}
 
+
+@ app.get('/contributors')
+async def get_contributors():
+    return contributions.get_commit_activity()
 
 @app.get('/summary')
 def summary():
