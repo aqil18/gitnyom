@@ -1,43 +1,24 @@
 from fastapi import FastAPI
 import uvicorn
-from .resume_points import my_utils
+import utils
+from gitingest import ingest
+
+import utils.contributions
+import utils.issues
+import utils.resume
+import utils.text_dump
 
 app = FastAPI()
 
+
 @app.get("/")
-def root():
-    return {'message': 'Welcome to Gitify!'}
-
-
-@app.get("/resume_points")
-async def generate_description():
-    print('hello')
-    text = open("example_repo.txt").read()
-    description = my_utils.generate_description(text)
-    return {"resume_points": description}
-
-
-@app.get('/summary')
-def summary():
-    issues = ""
-    return {'summary': [],
-            'chart': [],
-            'issues': {
-                'title': issues.title(),
-                'tags': issues.tags()
-    }
-    }
-
-@app.get('/anatomy')
-def graph():
-    component = ""
-    return {'name': component.name(), "type": component.class_type()}
-
-
-@app.get('/security')
-def security():
-    return {'message': 'hello security'}
-
+async def root():
+    contributions = utils.contributions.get_commit_activity('https://github.com/supabase/supabase')
+    response = utils.issues.get_issues('https://github.com/supabase/supabase')
+    summary, tree, content = await ingest('https://github.com/supabase/supabase')
+    utils.text_dump.summary(summary, tree, content)
+    resume_summary = utils.resume.generate_description(summary + tree + content)
+    return {'contributions': contributions, 'response': response, 'resume': resume_summary}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
