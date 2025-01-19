@@ -200,13 +200,13 @@ async function initGraph() {
 
     document.body.appendChild(popup);
 
-    // Remove popup on click outside
-    document.addEventListener("click", function removePopup(event) {
-      if (!popup.contains(event.target)) {
-        document.body.removeChild(popup);
-        document.removeEventListener("click", removePopup);
-      }
-    });
+    // // Remove popup on click outside
+    // document.addEventListener("click", function removePopup(event) {
+    //   if (!popup.contains(event.target)) {
+    //     document.body.removeChild(popup);
+    //     document.removeEventListener("click", removePopup);
+    //   }
+    // });
   }
 
   // Add event listener for node clicks
@@ -230,12 +230,12 @@ async function initGraph() {
 
       // Finds the matching node object in nodeObjects to get the nodeId
       const nodeId = Object.keys(nodeObjects).find(key =>
-        nodeObjects[key] === intersectedNode);
-
+      nodeObjects[key] === intersectedNode);
+      
       // If node has a summary, show popup
-      if (summaries[nodeId]) {
-        showPopup(nodeId, summaries[nodeId], event.clientX, event.clientY);
-      }
+      
+      showPopup(nodeId, nodeId + "'s popup", event.clientX, event.clientY);
+      
     }
   });
 
