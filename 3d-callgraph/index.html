@@ -9,9 +9,38 @@
         margin: 0;
         overflow: hidden;
       }
+      .key-pane {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid black;
+        z-index: 1000;
+      }
+      .key-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+      .key-color {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+      }
     </style>
   </head>
   <body>
+    <div class="key-pane">
+      <div class="key-item">
+        <div class="key-color" style="background-color: #00f0ff;"></div>
+        File
+      </div>
+      <div class="key-item">
+        <div class="key-color" style="background-color: #ff0000;"></div>
+        Folder
+      </div>
+    </div>
     <script type="importmap">
       {
         "imports": {
