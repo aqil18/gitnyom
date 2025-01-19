@@ -4,16 +4,16 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 // Graph data (replace with actual data or fetch dynamically)
 const nodes = [
-  { id: "file1", group: "file" },
-  { id: "file2", group: "file" },
   { id: "folder1", group: "folder" },
   { id: "folder2", group: "folder" },
+  { id: "file1", group: "file" },
+  { id: "file2", group: "file" },
 ];
 
 const links = [
-  { source: "file1", target: "folder1" },
-  { source: "folder1", target: "folder2" },
-  { source: "file2", target: "folder1" },
+  { source: "folder2", target: "folder1" },
+  { source: "file1", target: "folder2" },
+  { source: "file2", target: "folder2" },
 ];
 
 const summaries = {
