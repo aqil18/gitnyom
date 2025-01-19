@@ -1,8 +1,5 @@
 {
   "dependencies": {
     "three": "^0.172.0"
-  },
-  "scripts": {
-    "dev": "node app.js",
   }
 }
