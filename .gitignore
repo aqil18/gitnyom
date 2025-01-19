@@ -2,3 +2,4 @@
 example_repo.txt
 node_modules
 __pycache__/
+.venv/

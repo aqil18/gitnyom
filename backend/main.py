@@ -12,9 +12,9 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    contributions = utils.contributions.get_commit_activity('https://github.com/supabase/supabase')
-    response = utils.issues.get_issues('https://github.com/supabase/supabase')
-    fs = utils.text_dump.get_file_structure('https://github.com/supabase/supabase')
+    contributions = utils.contributions.get_commit_activity('https://github.com/aqil18/gitnyom')
+    response = utils.issues.get_issues('https://github.com/aqil18/gitnyom')
+    fs = utils.text_dump.get_file_structure('https://github.com/aqil18/gitnyom')
     # summary, tree, content = ingest('https://github.com/supabase/supabase')
     # utils.text_dump.summary(summary, tree, content)
     # resume_summary = utils.resume.generate_description(summary + tree + content)
