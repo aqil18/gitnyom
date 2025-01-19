@@ -1,2 +1,5 @@
 gitingest
-colorama 
+colorama
+matplotlib
+requests
+urllib
