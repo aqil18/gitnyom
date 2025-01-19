@@ -11,17 +11,17 @@ type Contributions = {
   percentage: number;
 }
 
-export default async function Home() {
+export default function Home() {
   const [currentTab, setCurrentTab] = useState<string>("Summary");
   const [url, setUrl] = useState<string>("");
   const tabs = useRef<string[]>(["Summary", "Anatomy", "Security"]);
   const backendUrl = "http://127.0.0.1:8000/";
 
-  useEffect(() => {
-    fetch(`${backendUrl}/?repo_url=${url}`)
-      .then((response) => console.log(response.json()))
-      .catch((error) => console.error("Error:", error))
-  }, [url])
+  // useEffect(() => {
+  //   fetch(`${backendUrl}/?repo_url=${url}`)
+  //     .then((response) => console.log(response.json()))
+  //     .catch((error) => console.error("Error:", error))
+  // }, [url])
 
   const example = {
     name: "Supabase",

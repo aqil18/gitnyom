@@ -14,13 +14,13 @@ export default function CliTextViewer({ fileName, fileUrl }: CliTextViewerProps)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchContent = async () => {
+    const fetchContent = () => {
       try {
-        const response = await fetch(fileUrl)
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const text = await response.text()
+        // const response = await fetch(fileUrl)
+        // if (!response.ok) {
+        //   throw new Error(`HTTP error! status: ${response.status}`)
+        // }
+        const text = ""
         setContent(text)
       } catch (e) {
         setError(`Failed to load ${fileName}: ${e instanceof Error ? e.message : String(e)}`)
