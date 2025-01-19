@@ -106,6 +106,12 @@ window.addEventListener("resize", () => {
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate);
+  scene.rotation.y += 0.01; // Rotate slowly
   renderer.render(scene, camera);
 }
+
+document.addEventListener('wheel', (event) => {
+  camera.position.z += event.deltaY * 0.1; // Zoom in/out
+});
+
 animate();
