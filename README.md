@@ -1,6 +1,7 @@
 ![title](/screenshots/title.png)
 
 ## What it does?
+Think Spotify Wrapped but for code.Throw us a GitHub repo URL and get beautiful visualizations of any repo's stats, contributors, structure, and security vulnerabilities. 
 
 ## Demo Videos
 
