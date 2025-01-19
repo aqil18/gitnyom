@@ -70,19 +70,23 @@ nodes.forEach((node) => {
 // Add Links to Scene
 const lineMaterial = new THREE.LineBasicMaterial({
   color: 0x00ff00, // Green
-  opacity: 1.0
+  opacity: 1.0,
+  transparent: true
 });
+//console.log("NODE OBJECTS", nodeObjects)
 
 links.forEach((link) => {
-  const source = nodeObjects[link.source];
-  const target = nodeObjects[link.target];
-  console.log("LINGING")
+  const source = link.source;
+  const target = link.target;
+  console.log("SOURCE", source) 
   if (source && target) {
+
     const points = [
-      new THREE.Vector3(source.position.x, source.position.y, source.position.z),
-      new THREE.Vector3(target.position.x, target.position.y, target.position.z),
+      new THREE.Vector3(source.x, source.y, source.z),
+      new THREE.Vector3(target.x, target.y, target.z),
     ];
     const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+    console.log("LINE GEOMETRY", lineGeometry)
     const line = new THREE.Line(lineGeometry, lineMaterial);
     scene.add(line);
   }
