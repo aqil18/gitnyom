@@ -16,10 +16,6 @@ def format_url(repo_url):
 def get_commit_activity(repo_url):
     formatted_url = format_url(repo_url)
     print(formatted_url)
-    # Headers for the request
-    # headers = {"Accept": "application/vnd.github+json",
-        #    "Authorization": f"Token {token}"}
-
     # Make the API request
     response = requests.get(formatted_url)
     if response.status_code == 202:
