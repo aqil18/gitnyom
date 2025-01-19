@@ -109,6 +109,55 @@ controls.enableDamping = true; // Smooth controls
 controls.dampingFactor = 0.1;
 controls.screenSpacePanning = false; // Disables panning out of the screen
 
+// Function to create and show popup
+function showPopup(content, x, y) {
+  const popup = document.createElement("div");
+  popup.style.position = "absolute";
+  popup.style.left = `${x}px`;
+  popup.style.top = `${y}px`;
+  popup.style.padding = "10px";
+  popup.style.backgroundColor = "white";
+  popup.style.border = "1px solid black";
+  popup.style.zIndex = 1000;
+  popup.innerHTML = content;
+
+  document.body.appendChild(popup);
+
+  // Remove popup on click outside
+  document.addEventListener("click", function removePopup(event) {
+    if (!popup.contains(event.target)) {
+      document.body.removeChild(popup);
+      document.removeEventListener("click", removePopup);
+    }
+  });
+}
+
+// Add event listener for node clicks
+renderer.domElement.addEventListener("click", (event) => {
+  // Calculate mouse position in normalized device coordinates (-1 to +1)
+  const mouse = new THREE.Vector2(
+    (event.clientX / window.innerWidth) * 2 - 1,
+    -(event.clientY / window.innerHeight) * 2 + 1
+  );
+
+  // Raycaster to find intersected objects
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(Object.values(nodeObjects));
+
+  if (intersects.length > 0) {
+    const intersectedNode = intersects[0].object;
+    const nodeId = Object.keys(nodeObjects).find(
+      (key) => nodeObjects[key] === intersectedNode
+    );
+
+    if (summaries[nodeId]) {
+      showPopup(summaries[nodeId], event.clientX, event.clientY);
+    }
+  }
+});
+
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate);
