@@ -46,6 +46,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
+
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -73,20 +74,20 @@ const lineMaterial = new THREE.LineBasicMaterial({
   opacity: 1.0,
   transparent: true
 });
-//console.log("NODE OBJECTS", nodeObjects)
+
+console.log("NODE OBJECTS", nodeObjects)
+console.log("LINKS", links)
 
 links.forEach((link) => {
   const source = link.source;
   const target = link.target;
-  console.log("SOURCE", source) 
-  if (source && target) {
 
+  if (source && target) {
     const points = [
       new THREE.Vector3(source.x, source.y, source.z),
       new THREE.Vector3(target.x, target.y, target.z),
     ];
     const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
-    console.log("LINE GEOMETRY", lineGeometry)
     const line = new THREE.Line(lineGeometry, lineMaterial);
     scene.add(line);
   }
