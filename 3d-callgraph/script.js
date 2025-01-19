@@ -1,6 +1,6 @@
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js";
-
+import * as d3 from "d3";
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 // Graph data (replace with actual data or fetch dynamically)
 const nodes = [
@@ -103,15 +103,20 @@ window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+// Initialize OrbitControls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Smooth controls
+controls.dampingFactor = 0.25;
+controls.screenSpacePanning = false; // Disables panning out of the screen
+
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate);
-  scene.rotation.y += 0.01; // Rotate slowly
+
+  // Update the controls
+  controls.update();
+
   renderer.render(scene, camera);
 }
-
-document.addEventListener('wheel', (event) => {
-  camera.position.z += event.deltaY * 0.1; // Zoom in/out
-});
 
 animate();
