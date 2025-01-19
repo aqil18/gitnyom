@@ -1,6 +1,12 @@
 import subprocess
 import os
-from parse_output import parse_output
+from typing import TypedDict
+from .parse_output import parse_output
+
+class SecurityResult(TypedDict):
+    scan_summary: str
+    scan_status: str
+    code_findings: str
 
 res = ""
 repo_url = ""
@@ -17,10 +23,11 @@ def runSemgrep(url, mode):
 
     clone_dir = cloneDir(repo_name)
     
+    res = {}
     if mode == "pro":
         semgrepPro(clone_dir)
     else:
-        semgrepBasic(clone_dir)
+        res = semgrepBasic(clone_dir)
 
     return res
 
@@ -40,7 +47,7 @@ def semgrepPro(clone_dir):
             print(decoded_line, end='')  # Print to console
             output_file.write(decoded_line)  # Write to file
 
-def semgrepBasic(clone_dir):
+def semgrepBasic(clone_dir) -> SecurityResult:
     command = ["semgrep", "scan"]
 
     # Open a file to write the output
@@ -59,6 +66,15 @@ def semgrepBasic(clone_dir):
         process.wait()
 
     parse_output(output_file_path, clone_dir)
+    final_output_names = ["scan_summary.txt", "scan_status.txt", "code_findings.txt"]
+
+    res: SecurityResult = {"scan_summary": "", "scan_status": "", "code_findings": ""}
+    for f in final_output_names:
+        with open(f"{clone_dir}/{f}", 'r') as file:
+            res[f.split('.')[0]] = file.read()
+        # res[f.split('.')[0]] = open(f"{clone_dir}/{f}", 'r').read()
+    
+    return res
 
 #check this out make sure it works properly
 def cloneDir(repo_name):
@@ -88,6 +104,5 @@ def cloneDir(repo_name):
 
     return clone_dir
 
-#take user input for url
-url = input("Enter the URL of the repository: ")
-runSemgrep(url, "basic")
+def get_security_analysis(url: str):
+    return runSemgrep(url, "basic")
