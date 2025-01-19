@@ -5,32 +5,29 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv('.env')
+token = os.getenv('TOKEN')
+
+def format_url(repo_url):
+    api_url = repo_url.replace(
+        'https://github.com', 'https://api.github.com/repos')
+    api_url = f"{api_url}/stats/contributors"
+    return api_url
 
 def get_commit_activity(repo_url):
-    # Parse the repository URL to extract owner and repo
-    parsed_url = urlparse(repo_url)
-    path_parts = parsed_url.path.strip("/").split("/")
-    if len(path_parts) != 2:
-        raise ValueError("Invalid GitHub repository URL")
-    owner, repo = path_parts
-
-    # API URL
-    api_url = f"https://api.github.com/repos/{owner}/{repo}/stats/contributors"
-
-
+    formatted_url = format_url(repo_url)
+    print(formatted_url)
     # Headers for the request
-    headers = {"Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {os.environ.get('TOKEN')}"  # Add token here
-    }
+    # headers = {"Accept": "application/vnd.github+json",
+        #    "Authorization": f"Token {token}"}
 
     # Make the API request
-    response = requests.get(api_url, headers=headers)
+    response = requests.get(formatted_url)
     if response.status_code == 202:
         print("GitHub is processing the statistics. Please try again in a few moments.")
         return None
     elif response.status_code != 200:
         raise Exception(f"Failed to fetch data: {response.status_code}, {response.text}")
-    
+
     data = response.json()
     total_commits_count = sum([contributor['total'] for contributor in data])
     contributors_data = []
