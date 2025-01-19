@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Anatomy: React.FC = () => {
-    return (
-        <div>
-            <h1>Anatomy Component</h1>
-        </div>
-    );
+  return (
+    <div>
+        <iframe src="http://localhost:8080" width="100%" height="500px" title="Embedded Site" />
+    </div>
+  );
 };
 
 export default Anatomy;
