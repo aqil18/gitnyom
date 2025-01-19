@@ -22,16 +22,71 @@ function traverseFileStructure(fileStructure, nodes = [], links = [], parent = n
 
 // Fetch file structure from the server
 async function fetchFileStructure(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch data: ${response.status}`);
+  const data = {
+    "name": "project-root",
+    "path": "/",
+    "url": "http://localhost:8000/api/project-root",
+    "type": "tree",
+    "contents": [
+      {
+        "name": "index.html",
+        "path": "/index.html",
+        "url": "http://localhost:8000/api/files/index.html",
+        "type": "blob"
+      },
+      {
+        "name": "scripts",
+        "path": "/scripts",
+        "url": "http://localhost:8000/api/files/scripts",
+        "type": "tree",
+        "contents": [
+          {
+            "name": "app.js",
+            "path": "/scripts/app.js",
+            "url": "http://localhost:8000/api/files/scripts/app.js",
+            "type": "blob"
+          },
+          {
+            "name": "utils.js",
+            "path": "/scripts/utils.js",
+            "url": "http://localhost:8000/api/files/scripts/utils.js",
+            "type": "blob"
+          }
+        ]
+      },
+      {
+        "name": "styles",
+        "path": "/styles",
+        "url": "http://localhost:8000/api/files/styles",
+        "type": "tree",
+        "contents": [
+          {
+            "name": "main.css",
+            "path": "/styles/main.css",
+            "url": "http://localhost:8000/api/files/styles/main.css",
+            "type": "blob"
+          }
+        ]
+      }
+    ]
   }
-  return response.json();
+
+  // Having issues with cors!!
+  // const response = await fetch(url)
+  
+  // data = response.json();
+  
+  // if (!response.ok) {
+  //   throw new Error(`Failed to fetch data: ${response.status}`);
+  //}
+
+  return data;
 }
 
 // Initialize the graph
 async function initGraph() {
-  const fileStructure = await fetchFileStructure("http://localhost:5000/file-structure");
+  const fileStructure = await fetchFileStructure("http://localhost:8000");
+  console.log(fileStructure)
   const { nodes, links } = traverseFileStructure(fileStructure);
 
   // D3 Force Layout
