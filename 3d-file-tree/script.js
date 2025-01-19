@@ -237,7 +237,7 @@ async function initGraph() {
       
       // If node has a summary, show popup
       
-      showPopup(nodeId, nodeId + "'s popup", event.clientX, event.clientY);
+      showPopup(nodeId, nodeId + "'s summary", event.clientX, event.clientY);
       
     }
   });
