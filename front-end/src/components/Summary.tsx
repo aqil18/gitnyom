@@ -79,7 +79,7 @@ const Summary: React.FC<SummaryProps> = (props: SummaryProps) => {
     });
 
     return (
-      <div className="flex flex-col overflow-auto h-full">
+      <div className="flex flex-col max-h-full overflow-scroll">
         <div className="flex flex-col gap-y-5">
           <h2>{props.name}</h2>
     
@@ -90,7 +90,7 @@ const Summary: React.FC<SummaryProps> = (props: SummaryProps) => {
           <div className="flex lg:flex-row gap-6">
             
             <ChartContainer
-              className="bg-[#4A665A]/[.18] rounded-2xl"
+              className="bg-[#4A665A]/[.18] rounded-2xl w-1/2"
               config={chartConfig}
             >
               <PieChart>
@@ -109,12 +109,8 @@ const Summary: React.FC<SummaryProps> = (props: SummaryProps) => {
                 />
               </PieChart>
             </ChartContainer>
-            <div className="w-full flex-1 h-full max-h-[500px] overflow-hidden">
-              hello
-              <div className="w-full overflow-y-auto h-full">
+            <div className="w-full max-w-1/2 h-full max-h-1/2">
                 <IssueTab />
-              </div>
-
             </div>
           </div>
         </div>

@@ -11,13 +11,23 @@ function Issue({ title, url, tags }: IssueProps) {
   return (
     <div className="p-4 mb-2 bg-[#4A665A]/[.18] rounded-lg text-white flex flex-col">
       <div className="flex justify-between items-center">
-        <h3 className="font-bold text-lg">
-          <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
-        </h3>
-        <span className="text-xs px-2 py-1 bg-green-500 rounded-full">
-          {tags.join(", ")}
-        </span>
+        <div className="flex flex-row gap-x-2">
+          <h3 className="font-bold w-4/6">
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {title}
+            </a>
+          </h3>
+
+          <div className="flex flex-row flex-wrap gap-2 w-2/6">
+            {tags.map((tag) => (
+              <span key={tag} className="text-xs px-2 py-1 bg-green-500 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
+
       <p className="text-sm text-gray-400 mt-1">
         Tags: {tags.length > 0 ? tags.join(", ") : "No tags"}
       </p>
@@ -63,7 +73,7 @@ const IssueTab = () => {
   };
 
   return (
-    <div className="bg-[#4A665A]/[.18] rounded-2xl p-4 flex flex-col">
+    <div className="bg-[#4A665A]/[.18] rounded-2xl p-4 flex flex-col max-h-full">
       {/* Search Bar */}
       <div className="mb-4">
         <Searchbar
@@ -72,12 +82,20 @@ const IssueTab = () => {
       </div>
 
       {/* Tags Bar */}
-      <div className="flex gap-4 mb-4">
-        {["bug", "external-issue", "to-triage", "enhancement", "documentation"].map((tag) => (
+      <div className="flex flex-row flex-wrap gap-4 mb-4 w-full">
+        {[
+          "to-triage",
+          "external-issue",
+          "enhancement",
+          "bug",
+          "documentation",
+        ].map((tag) => (
           <button
             key={tag}
             className={`px-4 py-2 rounded-lg border ${
-              selectedTag === tag ? "bg-[#4A665A]/[.18] text-255540" : "bg-[#4A665A]/[.18] text-255540"
+              selectedTag === tag
+                ? "bg-[#4A665A]/[.18] text-255540"
+                : "bg-[#4A665A]/[.18] text-255540"
             }`}
             onClick={() => handleTagClick(tag)}
           >
@@ -87,14 +105,9 @@ const IssueTab = () => {
       </div>
 
       {/* Issues List */}
-      <div className="flex-1">
+      <div className="overflow-scroll max-h-full">
         {issues.filter(filterIssues).map(({ title, url, tags }, index) => (
-          <Issue
-            key={index}
-            title={title}
-            url={url}
-            tags={tags}
-          />
+          <Issue key={index} title={title} url={url} tags={tags} />
         ))}
       </div>
     </div>
