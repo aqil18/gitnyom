@@ -16,7 +16,7 @@ class Directory(FileStructure):
     type: str  # "tree" (specific to directories)
     contents: List[Union["File", "Directory"]]  # Composite structure
 
-def get_file_structure(url: str) -> FileStructure | None:
+def get_file_structure(url: str) -> Optional[FileStructure]:
     api_url = url.replace(
         'https://github.com', 'https://api.github.com/repos')
     
