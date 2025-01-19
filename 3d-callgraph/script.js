@@ -75,8 +75,6 @@ const lineMaterial = new THREE.LineBasicMaterial({
   transparent: true
 });
 
-console.log("NODE OBJECTS", nodeObjects)
-console.log("LINKS", links)
 
 links.forEach((link) => {
   const source = link.source;
