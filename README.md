@@ -18,7 +18,88 @@ ___
 2. Provides a summary of each file on click of a node
 ___
 - Security (Under Development)
-1. Provides a security scan produced by Semgrep of all security vulnerabilities in the repo
+1. Provides a security scan produced by semantic analysis of all security vulnerabilities in the repo
+2. Example output:
+```
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 84 files tracked by git with 2045 Code rules:
+
+  Language      Rules   Files          Origin      Rules
+ ─────────────────────────────        ───────────────────
+  <multilang>      61      81          Community    1058
+  js              261      32          Pro rules     987
+  ts              271      24
+  json              4      11
+  bash              4       1
+  html              1       1
+
+
+
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+Some files were skipped or only partially analyzed.
+  Scan was limited to files tracked by git.
+  Partially scanned: 37 files only partially analyzed due to parsing or internal Semgrep errors
+  Scan skipped: 3 files matching .semgrepignore patterns
+  For a full list of skipped files, run semgrep with the --verbose flag.
+
+Ran 339 rules on 81 files: 8 findings.
+
+
+┌─────────────────┐
+│ 8 Code Findings │
+└─────────────────┘
+
+    frontend/modules/admin_portal/autotest_view/DataParser.js
+   ❯❯❱ javascript.browser.security.insecure-document-method.insecure-document-method
+          User controlled data in methods like `innerHTML`, `outerHTML` or `document.write` is an anti-pattern
+          that can lead to XSS vulnerabilities
+          Details: https://sg.run/LwA9
+
+          267┆ document.getElementById('bucket' + i).innerHTML = myData[i] + ' of ' + totalProjects + ' (
+               ' + perc + ' )';
+            ⋮┆----------------------------------------
+          271┆ document.getElementById('bucketAvg').innerHTML = (total / totalProjects ).toFixed(1) + ' (
+               # ' + totalProjects + ' )';
+            ⋮┆----------------------------------------
+          278┆ document.getElementById('bucketMedian').innerHTML = median;
+            ⋮┆----------------------------------------
+          279┆ document.getElementById('bucketPassing').innerHTML = numPassing;
+            ⋮┆----------------------------------------
+          280┆ document.getElementById('bucketFailing').innerHTML = numFailing;
+
+    frontend/public/index.html
+    ❯❱ html.security.audit.missing-integrity.missing-integrity
+          This tag is missing an 'integrity' subresource integrity attribute. The 'integrity' attribute allows
+          for the browser to verify that externally hosted files (for example from a CDN) are delivered
+          without unexpected manipulation. Without this attribute, if an attacker can modify the externally
+          hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the
+          base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the
+          'integrity' attribute for all externally hosted files.
+          Details: https://sg.run/krXA
+
+           11┆ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    src/batch/GradeExporter.ts
+    ❯❱ javascript.lang.security.audit.incomplete-sanitization.incomplete-sanitization
+          `txt.replace` method will only replace the first occurrence when used with a string argument ('[').
+          If this method is used for escaping of dangerous data then there is a possibility for a bypass. Try
+          to use sanitization library instead or use a Regex with a global flag.
+          Details: https://sg.run/1GbQ
+
+          120┆ txt = txt.replace('[', '');
+            ⋮┆----------------------------------------
+    ❯❱ javascript.lang.security.audit.incomplete-sanitization.incomplete-sanitization
+          `txt.replace` method will only replace the first occurrence when used with a string argument (']').
+          If this method is used for escaping of dangerous data then there is a possibility for a bypass. Try
+          to use sanitization library instead or use a Regex with a global flag.
+          Details: https://sg.run/1GbQ
+
+          121┆ txt = txt.replace(']', '');
+```
 
 ## Demo Videos
 ### Full walkthrough of our project
